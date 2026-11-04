@@ -1,0 +1,55 @@
+/*
+ * Tokens da identidade visual (CLAUDE.md, seção 7).
+ * Nenhuma cor fora desta lista entra no app.
+ *
+ * Tema: segue o sistema por padrão. A escolha manual grava
+ * data-tema="claro" ou data-tema="escuro" no <html>.
+ */
+
+:root {
+  --primaria: #437066;
+  --sobre-primaria: #ffffff;
+  --secundaria: #d8e5df;
+  --fundo: #f5f1e9;
+  --superficie: #ffffff;
+  --texto: #272d45;
+  --texto-2: #5a6072;
+  --linha: #e3ded3;
+  /* Só selos e detalhes. Nunca como cor de texto sobre fundo claro. */
+  --destaque: #b89964;
+  --alerta: #b3452f;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) {
+    --primaria: #7db3a5;
+    --sobre-primaria: #10201c;
+    --secundaria: #24352f;
+    --fundo: #121a18;
+    --superficie: #1a2522;
+    --texto: #e7ece8;
+    --texto-2: #a7b3ae;
+    --linha: #2c3b36;
+    --destaque: #d3b47e;
+    --alerta: #e08a6e;
+
+    color-scheme: dark;
+  }
+}
+
+:root[data-tema="escuro"] {
+  --primaria: #7db3a5;
+  --sobre-primaria: #10201c;
+  --secundaria: #24352f;
+  --fundo: #121a18;
+  --superficie: #1a2522;
+  --texto: #e7ece8;
+  --texto-2: #a7b3ae;
+  --linha: #2c3b36;
+  --destaque: #d3b47e;
+  --alerta: #e08a6e;
+
+  color-scheme: dark;
+}

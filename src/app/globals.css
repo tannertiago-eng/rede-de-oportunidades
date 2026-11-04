@@ -1,26 +1,74 @@
 @import "tailwindcss";
+@import "../estilos/tokens.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Variante "escuro:" que segue o sistema, a menos que a pessoa tenha escolhido um tema. */
+@custom-variant escuro {
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-tema="claro"]) *) {
+      @slot;
+    }
+  }
+  &:where([data-tema="escuro"] *) {
+    @slot;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/*
+ * Tailwind v4: o tema é declarado aqui, não em tailwind.config.
+ * "--color-*: initial" remove a paleta padrão do Tailwind, para que
+ * só as cores da identidade existam como classes (bg-primaria, text-texto-2...).
+ */
+@theme inline {
+  --color-*: initial;
+  --color-primaria: var(--primaria);
+  --color-sobre-primaria: var(--sobre-primaria);
+  --color-secundaria: var(--secundaria);
+  --color-fundo: var(--fundo);
+  --color-superficie: var(--superficie);
+  --color-texto: var(--texto);
+  --color-texto-2: var(--texto-2);
+  --color-linha: var(--linha);
+  --color-destaque: var(--destaque);
+  --color-alerta: var(--alerta);
+
+  --font-titulo: var(--fonte-kanit), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-corpo: var(--fonte-martel), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius-botao: 12px;
+  --radius-cartao: 16px;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: var(--font-corpo);
+    /* Martel Sans tem ascendentes altos: altura de linha generosa. */
+    line-height: 1.55;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-titulo);
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-weight: 300;
+  }
+
+  h2,
+  h3 {
+    font-weight: 500;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--primaria);
+    outline-offset: 2px;
+  }
 }

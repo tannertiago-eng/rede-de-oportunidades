@@ -87,7 +87,7 @@ Fazer parte da lista de membros de uma igreja revela convicção religiosa, que 
 
 ## 5. Modelo de dados (proposta inicial)
 
-```
+```text
 perfis               id (= auth.users.id), nome, telefone_whatsapp, email, maior_de_18 (bool),
                      autorizacao_responsavel_em (timestamp, nulo se maior), nivel (operacional|tecnico|gestao|executivo),
                      area, resumo, experiencias (jsonb), buscando (bool), modo_discreto (bool),
@@ -207,7 +207,10 @@ Perguntas, estrutura de pastas, esquema revisado e plano da Fase 0 foram entregu
 1. **Pasta:** `~/RedeDeOportunidades`. O pacote npm se chama `rede-de-oportunidades` (o npm não aceita maiúsculas).
 2. **Docker:** OrbStack instalado. Supabase local e testes pgTAP (`supabase test db`) rodam nele.
 3. **Cadastro:** só vale **depois de aprovado pela coordenação**. Até lá, a pessoa vê apenas uma tela de "aguardando aprovação".
-4. **Login:** código de 6 dígitos por e-mail (OTP), usando o e-mail embutido do Supabase no início. Motivo: no iPhone, o PWA instalado não compartilha sessão com o Safari, então o link mágico não funciona bem. Um **monitor** (Fase 1) detecta quando o envio de e-mail bater no limite e avisa que é hora de trocar para SMTP próprio. A troca em si **exige aprovação**, porque envia e-mails de membros a um terceiro.
+4. **Login:** código de 6 dígitos por e-mail (OTP). Motivo: no iPhone, o PWA instalado não compartilha sessão com o Safari, então o link mágico não funciona bem.
+   - **Desenvolvimento:** Supabase local, com os e-mails caindo na caixa de teste local (porta 54324). Nada sai da máquina.
+   - **Produção:** conferido na documentação oficial em 04/11/2026, o e-mail embutido do Supabase **só entrega para endereços da equipe do projeto**, tem limite de 2 por hora e "não é para produção". Por isso, um **SMTP próprio é obrigatório antes do primeiro membro real**. A escolha do provedor **exige aprovação**, porque ele recebe e-mails de membros.
+   - **Monitor (Fase 1):** mesmo com SMTP próprio, o limite padrão é de 30 e-mails por hora. Registrar cada falha de envio por limite (só contagem e horário, sem e-mail) e mostrar um aviso para a coordenação e o admin quando passar de um limiar. O aviso indica o que ajustar (limite de envio ou plano do provedor).
 5. **Menores de 18:** fora do MVP. Quem responde "não" em "sou maior de 18" não consegue concluir o cadastro.
 6. **Contas** (Supabase, hospedagem): no e-mail pessoal do responsável técnico por enquanto; migrar para um e-mail da igreja depois. Documentar a migração no README.
 7. **Ícone e marca:** provisórios, feitos com os tokens.
