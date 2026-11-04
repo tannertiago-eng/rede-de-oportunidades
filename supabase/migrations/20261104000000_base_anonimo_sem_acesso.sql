@@ -13,8 +13,13 @@ alter default privileges for role postgres in schema public
   revoke all on sequences from anon;
 
 -- Funções: o Postgres dá EXECUTE a PUBLIC (e, portanto, ao anon) por padrão.
+-- Essa concessão é GLOBAL: uma revogação "in schema" não a remove,
+-- por isso a primeira instrução não tem "in schema".
+alter default privileges for role postgres
+  revoke execute on functions from public;
+
 alter default privileges for role postgres in schema public
-  revoke execute on functions from public, anon;
+  revoke execute on functions from anon;
 
 alter default privileges for role postgres in schema public
   grant execute on functions to authenticated, service_role;

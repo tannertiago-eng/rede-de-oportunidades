@@ -228,4 +228,6 @@ Perguntas, estrutura de pastas, esquema revisado e plano da Fase 0 foram entregu
 - **Tailwind v4:** sem `tailwind.config`. Os tokens vão em `@theme` no CSS.
 - **Supabase SSR (`@supabase/ssr`):** cookies com `getAll`/`setAll`. O `setAll` recebe também `headers` anti-cache, que precisam ir para a resposta. Um cliente novo por requisição. No servidor, use **`getClaims()`** para autorização, nunca `getSession()`. Chame `getClaims()` logo no início do proxy.
 - **Variáveis:** `NEXT_PUBLIC_SUPABASE_URL` e `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`. Chave secreta nunca com prefixo `NEXT_PUBLIC_`.
+- **Permissões padrão do banco** (migração `20261104000000`): o `anon` não recebe nada em objetos novos do `public`. Funções criadas pelo `postgres` **não** ganham mais `EXECUTE` para PUBLIC, em nenhum esquema. No `public`, o `authenticated` recebe por padrão; fora dele, conceda explicitamente. O teste `00_base_anonimo` também exige RLS ligado em toda tabela do `public`.
+- **Tipos de rota:** `LayoutProps`/`PageProps` são gerados; por isso `npm run tipos` roda `next typegen` antes do `tsc`.
 - **Fontes:** via `next/font/google`, servidas pelo próprio site. O navegador do membro não chama o Google.
