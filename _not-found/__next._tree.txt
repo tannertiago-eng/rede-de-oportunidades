@@ -1,0 +1,4 @@
+:HL["/rede-de-oportunidades/_next/static/chunks/3jgt-w-j4a3ib.css","style"]
+2:[["children",{"s":"__PAGE__","h":160}]]
+1:[["children",{"s":"/_not-found","h":96,"c":"$Q2"}]]
+0:{"b":"-L_1r4UNd_ts3EQH0n6XD","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

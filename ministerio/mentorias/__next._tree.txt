@@ -1,0 +1,11 @@
+:HL["/rede-de-oportunidades/_next/static/chunks/3jgt-w-j4a3ib.css","style"]
+:HL["/rede-de-oportunidades/_next/static/media/aa30bce4d9e280ae-s.p.3vomj4ys718n3.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/rede-de-oportunidades/_next/static/media/ad80f934d0ba4cc5-s.p.3y48j16vw3ns0.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/rede-de-oportunidades/_next/static/media/b595f62d5a019468-s.p.0hwi9_9hwu_ow.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/rede-de-oportunidades/_next/static/media/d2e16022e41e58be-s.p.1dk4p90tfen45.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/rede-de-oportunidades/_next/static/media/e640f586e5baa0c4-s.p.2wnap8y3h3w0m.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+4:[["children",{"s":"__PAGE__","h":160}]]
+3:[["children",{"s":"mentorias","h":96,"c":"$Q4"}]]
+2:[["children",{"s":"ministerio","h":96,"c":"$Q3"}]]
+1:[["children",{"s":"(app)","h":96,"c":"$Q2"}]]
+0:{"b":"-L_1r4UNd_ts3EQH0n6XD","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
