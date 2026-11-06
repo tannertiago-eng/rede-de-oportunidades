@@ -9,7 +9,9 @@
     "lint": "eslint",
     "tipos": "next typegen && tsc --noEmit",
     "testes:db": "supabase test db",
-    "verificar": "npm run lint && npm run tipos && npm run testes:db"
+    "verificar": "npm run lint && npm run tipos && npm run testes",
+    "testes": "node --test \"src/**/*.test.ts\"",
+    "publicar": "bash scripts/publicar.sh"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",

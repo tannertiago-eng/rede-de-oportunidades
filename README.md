@@ -4,53 +4,44 @@ Web app (PWA) que conecta membros da igreja a trabalho, negócios e crescimento 
 
 As regras do produto, as decisões e as notas técnicas estão no [CLAUDE.md](CLAUDE.md).
 
-## Requisitos
+## Estado atual: protótipo
 
-- Node 24 ou superior
-- [OrbStack](https://orbstack.dev) ou Docker Desktop (o Supabase local roda em contêineres)
-- Supabase CLI: `brew install supabase/tap/supabase`
+Protótipo navegável para teste interno, **sem backend**: dados fictícios, tudo salvo só no aparelho de quem testa.
+
+- **Para testar:** <https://tannertiago-eng.github.io/rede-de-oportunidades/>
+- **Para o desenvolvedor que vai construir o sistema real:** [para-o-desenvolvedor/README.md](para-o-desenvolvedor/README.md)
 
 ## Rodar na sua máquina
 
 ```bash
 npm install
-supabase start              # sobe banco, autenticação e caixa de e-mail de teste
-cp .env.example .env.local  # preencha com a saída de "supabase status"
-npm run dev                 # http://localhost:3000
+npm run dev         # http://localhost:3000
 ```
 
-Endereços locais, depois do `supabase start`:
-
-| O quê | Endereço |
-| --- | --- |
-| App | <http://localhost:3000> |
-| Painel do banco (Studio) | <http://127.0.0.1:54323> |
-| Caixa de e-mail de teste | <http://127.0.0.1:54324> |
-
-Nenhum e-mail sai da máquina em desenvolvimento: os códigos de login caem na caixa de teste.
-
-## Verificações
+## Verificações e publicação
 
 ```bash
-npm run lint        # padrão de código
-npm run tipos       # TypeScript
-npm run testes:db   # testes de segurança do banco (pgTAP), precisa do supabase start
-npm run verificar   # os três acima
+npm run verificar   # lint, tipos e testes das regras
 npm run build       # build de produção
+npm run publicar    # verifica, gera e publica no GitHub Pages
 ```
 
-Nenhuma fase é dada como concluída sem `npm run verificar` e `npm run build` passando.
+O número que recebe as sugestões do WhatsApp fica em `.env.publicar`, fora do git: `NEXT_PUBLIC_WHATSAPP_SUGESTOES=5565999999999` (com DDI, sem símbolos). Sem ele, o WhatsApp pede para escolher o contato. **O número fica visível para quem abrir o protótipo.**
 
-## Variáveis de ambiente
+## Banco de dados local (para a versão real)
 
-| Variável | Onde pegar | Pode ir para o navegador? |
-| --- | --- | --- |
-| `NEXT_PUBLIC_SUPABASE_URL` | `supabase status` (local) ou painel > Project Settings > API | Sim |
-| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Mesmo lugar, chave "Publishable" | Sim |
+Precisa de [OrbStack](https://orbstack.dev) ou Docker Desktop e do Supabase CLI (`brew install supabase/tap/supabase`).
 
-A chave **secreta** do Supabase nunca vai para o código, nem com prefixo `NEXT_PUBLIC_`. O `.env.local` está no `.gitignore`.
+```bash
+supabase start      # banco, autenticação e caixa de e-mail de teste (http://127.0.0.1:54324)
+npm run testes:db   # testes de segurança do banco (pgTAP)
+```
+
+Variáveis da versão real: `NEXT_PUBLIC_SUPABASE_URL` e `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` (modelo em `.env.example`). A chave **secreta** nunca vai para o código, nem com prefixo `NEXT_PUBLIC_`.
 
 ## Avisos de operação
+
+Estes avisos valem para a versão real, com Supabase.
 
 ### Pausa do Supabase gratuito
 
@@ -67,15 +58,13 @@ O e-mail embutido do Supabase **só entrega para endereços da equipe do projeto
 
 ### Hospedagem
 
-Ainda não definida. O plano gratuito da Vercel (Hobby) é restrito a "uso pessoal não comercial" e não fala de ONGs. Netlify e Cloudflare serão avaliados antes do primeiro deploy público.
+O protótipo fica no GitHub Pages. A hospedagem da versão real ainda não está definida: o plano gratuito da Vercel (Hobby) é restrito a "uso pessoal não comercial" e não fala de ONGs.
 
 ### Contas
 
 As contas de Supabase e hospedagem estão, por enquanto, no e-mail pessoal do responsável técnico. Quando houver um e-mail da igreja: convidar esse e-mail como **Owner** da organização no Supabase e na hospedagem, confirmar o acesso e só então remover o e-mail pessoal.
 
 ## Instalar no celular
-
-A instalação na tela inicial exige **HTTPS**. Por isso, o teste no celular é feito no endereço publicado, não no `localhost`.
 
 - **Android (Chrome):** menu ⋮ > "Instalar app".
 - **iPhone (Safari):** botão Compartilhar > "Adicionar à Tela de Início".
@@ -84,15 +73,19 @@ A instalação na tela inicial exige **HTTPS**. Por isso, o teste no celular é 
 
 ```text
 src/
-  proxy.ts                 renova a sessão a cada requisição (Next 16: substitui o middleware.ts)
   app/
-    (aberto)/              páginas sem login (sem nome da igreja)
-    (app)/                 área do membro, com navegação inferior
+    (aberto)/              entrada, política, termos e guia do teste (sem nome da igreja)
+    (entrada)/             consentimento, cadastro e aguardando aprovação
+    (app)/                 área do membro e do ministério
     manifest.ts            manifesto do PWA
-  componentes/ui/          Botao, Cartao, Campo, Chip, Selo, Icone
-  componentes/layout/      Cabecalho, NavegacaoInferior, AlternarTema
+  componentes/ui/          Botao, Cartao, Campo, Formulario, Chip, Selo, Aviso, Icone
+  componentes/layout/      Cabecalho, NavegacaoInferior, Guarda, FaixaPrototipo...
   estilos/tokens.css       cores da identidade, claro e escuro
-  lib/supabase/            clientes do navegador, do servidor e do proxy
+  dominio/                 tipos e regras (visibilidade, simulado, indicadores)
+  dados/                   dados fictícios e loja local: o que será trocado pelo Supabase
+  lib/supabase/            clientes do Supabase, prontos para a versão real
+para-o-desenvolvedor/      guia de transição e proxy de sessão
+scripts/publicar.sh        publicação no GitHub Pages
 supabase/
   migrations/              mudanças no banco, em ordem
   tests/                   testes pgTAP de permissões

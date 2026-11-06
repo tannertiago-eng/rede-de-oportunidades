@@ -1,8 +1,14 @@
 import type { NextConfig } from "next";
 
+// Protótipo: exportação estática para o GitHub Pages, sem servidor.
+// Na versão de produção, o desenvolvedor retira output/basePath e restaura
+// o proxy e os cabeçalhos (ver para-o-desenvolvedor/README.md).
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const nextConfig: NextConfig = {
-  cacheComponents: true,
-  partialPrefetching: true,
+  output: "export",
+  trailingSlash: true,
+  basePath,
   turbopack: {
     rules: {
       "*.css": {
@@ -10,23 +16,6 @@ const nextConfig: NextConfig = {
         as: "*.css",
       },
     },
-  },
-  async redirects() {
-    return [{ source: "/", destination: "/inicio", permanent: false }];
-  },
-  // Cabeçalhos do guia de PWA do Next (02-guides/progressive-web-apps.md, seção 8).
-  async headers() {
-    return [
-      {
-        source: "/(.*)",
-        headers: [
-          { key: "X-Content-Type-Options", value: "nosniff" },
-          { key: "X-Frame-Options", value: "DENY" },
-          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
-        ],
-      },
-    ];
   },
 };
 

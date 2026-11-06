@@ -2,7 +2,7 @@
 
 @AGENTS.md
 
-> Documento-base do projeto. As seções 0 a 11 são o pedido original. As seções 12 e 13 registram decisões já tomadas e notas técnicas conferidas. Leia tudo antes de trabalhar.
+> Documento-base do projeto. As seções 0 a 11 são o pedido original. As seções 12 e 13 registram decisões já tomadas e notas técnicas conferidas. Leia tudo antes de trabalhar. **Estado atual: protótipo sem backend (decisão 12.10).**
 
 ---
 
@@ -219,10 +219,16 @@ Perguntas, estrutura de pastas, esquema revisado e plano da Fase 0 foram entregu
 
 ---
 
+10. **Mudança de rumo (novembro de 2026):** o escopo atual é um **protótipo navegável para teste interno** na igreja, com dados fictícios e sem backend. Depois, **um desenvolvedor faz banco de dados, login e segurança**. As fases da seção 9 continuam valendo para esse trabalho. Guia em `para-o-desenvolvedor/README.md`.
+11. **Publicação do protótipo:** GitHub Pages, conta `tannertiago-eng`, repositório público (`npm run publicar`). Nada de dados reais, nome da igreja ou segredos no repositório. Sugestões dos testadores chegam por WhatsApp (botão no topo).
+
+---
+
 ## 13. Notas técnicas conferidas (Next 16.4 / Supabase)
 
 - **Next 16:** `middleware.ts` virou `src/proxy.ts`, que exporta `proxy`. Leia `node_modules/next/dist/docs/` antes de usar qualquer API do Next.
-- **`cacheComponents: true`** (vem ligado no template): ler `cookies()` fora de um `<Suspense>` **quebra o build**. Leitura de sessão fica dentro de componentes sob `<Suspense>`, nunca no topo de um layout. Guia: `02-guides/authentication-with-cache-components.md`.
+- **Protótipo:** exportação estática, por isso sem proxy, cabeçalhos, redirects e `cacheComponents` no `next.config.ts`. Rotas de detalhe usam `?id=` porque itens criados no aparelho não existem no build. Dados: `src/dados/` (localStorage).
+- **`cacheComponents: true`** (vem ligado no template; desligado no protótipo): ler `cookies()` fora de um `<Suspense>` **quebra o build**. Leitura de sessão fica dentro de componentes sob `<Suspense>`, nunca no topo de um layout. Guia: `02-guides/authentication-with-cache-components.md`.
 - **Tema sem "piscar":** script inline no `<head>` lê a preferência e aplica `data-tema` no `<html>` antes da pintura (`02-guides/preventing-flash-before-hydration.md`).
 - **PWA:** para instalar bastam manifest (`src/app/manifest.ts`) e HTTPS. Service worker não é necessário.
 - **Tailwind v4:** sem `tailwind.config`. Os tokens vão em `@theme` no CSS.
