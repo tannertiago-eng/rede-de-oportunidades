@@ -21,7 +21,7 @@ function Formulario({ negocio }: { negocio?: Negocio }) {
 
   return (
     <form
-      className="flex flex-col gap-4"
+      className="flex flex-col gap-4 md:max-w-2xl"
       onSubmit={(evento) => {
         evento.preventDefault();
         const d = new FormData(evento.currentTarget);
@@ -92,7 +92,7 @@ function Conteudo() {
   return (
     <>
       <Cabecalho titulo="Meu negócio" voltar={voltar} />
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 md:max-w-2xl">
         {meus.map((n) => (
           <Cartao key={n.id}>
             <Selo>{ROTULO_STATUS[n.status]}</Selo>

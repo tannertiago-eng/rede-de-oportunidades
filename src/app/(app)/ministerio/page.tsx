@@ -33,11 +33,11 @@ export default function PaginaMinisterio() {
   return (
     <>
       <Cabecalho titulo="Ministério" />
-      <ul className="flex flex-col gap-3">
+      <ul className="flex flex-col gap-3 md:grid md:grid-cols-2 lg:grid-cols-3">
         {itens.map((item) => (
           <li key={item.href}>
             <Link href={item.href}>
-              <Cartao className="flex items-center gap-4">
+              <Cartao className="flex h-full items-center gap-4 transition-colors hover:border-primaria">
                 <div className="min-w-0 flex-1">
                   <h2 className="text-lg">{item.titulo}</h2>
                   <p className="text-sm text-texto-2">{item.detalhe}</p>

@@ -22,7 +22,7 @@ export default function PaginaCadastrarVaga() {
       <Cabecalho titulo="Cadastrar vaga" voltar={{ href: "/ministerio", rotulo: "Ministério" }} />
       <form
         key={versao}
-        className="flex flex-col gap-4"
+        className="flex flex-col gap-4 md:max-w-2xl"
         onSubmit={(evento) => {
           evento.preventDefault();
           const d = new FormData(evento.currentTarget);

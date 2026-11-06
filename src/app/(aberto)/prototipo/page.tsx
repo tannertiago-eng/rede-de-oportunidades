@@ -44,14 +44,16 @@ export default function PaginaPrototipo() {
   }
 
   return (
-    <main className="mx-auto w-full max-w-xl px-4 py-6">
+    <main className="mx-auto w-full max-w-xl px-4 py-6 md:max-w-4xl md:px-6">
       <h1 className="text-3xl">Como testar</h1>
       <p className="mt-2 text-texto-2">Este é um protótipo para coletar opiniões. Nada aqui é real.</p>
 
-      <div className="mt-4 flex flex-col gap-3">
-        <Aviso tipo="alerta">
-          Não digite seus dados verdadeiros. Tudo fica salvo só neste aparelho e nenhuma informação vai para um servidor, mas este protótipo não tem a proteção da versão final.
-        </Aviso>
+      <div className="mt-4 flex flex-col gap-3 md:grid md:grid-cols-2 md:items-start">
+        <div className="md:col-span-2">
+          <Aviso tipo="alerta">
+            Não digite seus dados verdadeiros. Tudo fica salvo só neste aparelho e nenhuma informação vai para um servidor, mas este protótipo não tem a proteção da versão final.
+          </Aviso>
+        </div>
 
         {hidratado && (
           <Cartao>
@@ -118,7 +120,7 @@ export default function PaginaPrototipo() {
           </div>
         </Cartao>
 
-        <Link href="/" className={classesBotao("principal", true)}>
+        <Link href="/" className={`${classesBotao("principal", true)} md:col-span-2`}>
           Voltar para o app
         </Link>
       </div>

@@ -221,6 +221,7 @@ Perguntas, estrutura de pastas, esquema revisado e plano da Fase 0 foram entregu
 
 10. **Mudança de rumo (novembro de 2026):** o escopo atual é um **protótipo navegável para teste interno** na igreja, com dados fictícios e sem backend. Depois, **um desenvolvedor faz banco de dados, login e segurança**. As fases da seção 9 continuam valendo para esse trabalho. Guia em `para-o-desenvolvedor/README.md`.
 11. **Publicação do protótipo:** GitHub Pages, conta `tannertiago-eng`, repositório público (`npm run publicar`). Nada de dados reais, nome da igreja ou segredos no repositório. Sugestões dos testadores chegam por WhatsApp (botão no topo).
+12. **Versão para computador (pedido do responsável, novembro de 2026):** o app continua mobile-first, mas se adapta. A partir de `md` (768 px), listas em colunas; a partir de `lg` (1024 px), menu lateral. Mesmas telas e mesmo link.
 
 ---
 

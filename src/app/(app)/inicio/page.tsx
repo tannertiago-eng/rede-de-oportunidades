@@ -62,8 +62,8 @@ export default function PaginaInicio() {
   return (
     <>
       <Cabecalho titulo={`Olá, ${usuario.nome.split(" ")[0]}`} />
-      <div className="flex flex-col gap-4">
-        <Cartao>
+      <div className="flex flex-col gap-4 md:grid md:grid-cols-2">
+        <Cartao className={mentor ? "" : "md:col-span-2"}>
           <p className="text-sm font-semibold text-texto-2">Próxima etapa</p>
           {trilhaAtual && proximoItem ? (
             <>
@@ -71,7 +71,7 @@ export default function PaginaInicio() {
               <p className="mt-1 text-texto-2">
                 Trilha {trilhaAtual.nome} · {concluidos} de {trilhaAtual.itens.length} concluídas
               </p>
-              <Link href={`/trilhas/detalhe?id=${trilhaAtual.id}`} className={`${classesBotao("principal", true)} mt-4`}>
+              <Link href={`/trilhas/detalhe?id=${trilhaAtual.id}`} className={`${classesBotao("principal", true)} mt-4 md:w-auto`}>
                 Continuar trilha
               </Link>
             </>
@@ -79,7 +79,7 @@ export default function PaginaInicio() {
             <>
               <h2 className="mt-1 text-xl">Escolha uma trilha</h2>
               <p className="mt-1 text-texto-2">Cursos gratuitos, organizados pelo ministério, para o momento que você está vivendo.</p>
-              <Link href="/trilhas" className={`${classesBotao("principal", true)} mt-4`}>
+              <Link href="/trilhas" className={`${classesBotao("principal", true)} mt-4 md:w-auto`}>
                 Ver trilhas
               </Link>
             </>
@@ -96,15 +96,15 @@ export default function PaginaInicio() {
           </Cartao>
         )}
 
-        <section aria-labelledby="titulo-vagas">
+        <section aria-labelledby="titulo-vagas" className="md:col-span-2">
           <h2 id="titulo-vagas" className="mt-2 mb-3 text-xl">
             Vagas para o seu nível
           </h2>
-          <ul className="flex flex-col gap-3">
+          <ul className="flex flex-col gap-3 md:grid md:grid-cols-2 lg:grid-cols-3">
             {vagas.map((vaga) => (
               <li key={vaga.id}>
                 <Link href={`/vagas/detalhe?id=${vaga.id}`}>
-                  <Cartao className="flex items-center gap-4">
+                  <Cartao className="flex h-full items-center gap-4 transition-colors hover:border-primaria">
                     <div className="min-w-0 flex-1">
                       <Selo>Curada pelo ministério</Selo>
                       <h3 className="mt-2 text-lg">{vaga.titulo}</h3>
@@ -121,7 +121,7 @@ export default function PaginaInicio() {
           </ul>
         </section>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 md:col-span-2 md:grid md:grid-cols-2 md:items-start lg:grid-cols-3">
           <Link href="/avaliacoes" className={classesBotao("secundario", true)}>
             <Icone nome="avaliacao" /> Avaliações
           </Link>

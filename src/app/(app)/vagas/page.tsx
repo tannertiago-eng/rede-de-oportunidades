@@ -51,13 +51,15 @@ export default function PaginaVagas() {
             </Chip>
           ))}
         </div>
+        <div className="md:max-w-xs">
         <Selecao id="modalidade" rotulo="Modalidade" value={modalidade} onChange={(e) => setModalidade(e.target.value as Modalidade | "")} opcoes={[{ valor: "", rotulo: "Todas" }, ...(Object.keys(ROTULO_MODALIDADE) as Modalidade[]).map((m) => ({ valor: m, rotulo: ROTULO_MODALIDADE[m] }))]} />
+        </div>
 
-        <ul className="flex flex-col gap-3">
+        <ul className="flex flex-col gap-3 md:grid md:grid-cols-2 lg:grid-cols-3">
           {lista.map((v) => (
             <li key={v.id}>
               <Link href={`/vagas/detalhe?id=${v.id}`}>
-                <Cartao className="flex items-center gap-4">
+                <Cartao className="flex h-full items-center gap-4 transition-colors hover:border-primaria">
                   <div className="min-w-0 flex-1">
                     <Selo>Curada pelo ministério</Selo>
                     <h2 className="mt-2 text-lg">{v.titulo}</h2>

@@ -56,6 +56,8 @@ export default function PaginaRevisao() {
     <>
       <Cabecalho titulo="Fila de revisão" voltar={{ href: "/ministerio", rotulo: "Ministério" }} />
       <p className="mb-4 text-sm text-texto-2">Recuse marketing multinível, oportunidades de investimento, empréstimos entre membros, política partidária e vagas que exijam religião.</p>
+      <div className="md:grid md:grid-cols-2 md:items-start md:gap-6">
+      <section>
       <h2 className="mb-2 text-xl">Negócios ({negocios.length})</h2>
       <div className="flex flex-col gap-3">
         {negocios.map((n) => (
@@ -68,7 +70,9 @@ export default function PaginaRevisao() {
         ))}
         {negocios.length === 0 && <p className="text-texto-2">Nenhum negócio aguardando.</p>}
       </div>
-      <h2 className="mt-6 mb-2 text-xl">Vagas ({vagas.length})</h2>
+      </section>
+      <section>
+      <h2 className="mt-6 mb-2 text-xl md:mt-0">Vagas ({vagas.length})</h2>
       <div className="flex flex-col gap-3">
         {vagas.map((v) => (
           <ItemRevisao key={v.id} id={v.id} titulo={v.titulo} aoDecidir={(publicar, motivo) => revisarVaga(v.id, publicar, motivo)}>
@@ -79,6 +83,8 @@ export default function PaginaRevisao() {
           </ItemRevisao>
         ))}
         {vagas.length === 0 && <p className="text-texto-2">Nenhuma vaga aguardando.</p>}
+      </div>
+      </section>
       </div>
     </>
   );

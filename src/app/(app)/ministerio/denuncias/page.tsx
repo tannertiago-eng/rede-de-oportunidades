@@ -19,7 +19,7 @@ function Conteudo() {
   return (
     <>
       <Cabecalho titulo="Denúncias" voltar={{ href: "/ministerio", rotulo: "Ministério" }} />
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 md:grid md:grid-cols-2 md:items-start">
         {estado.denuncias.map((d) => (
           <Cartao key={d.id}>
             <Selo>{STATUS[d.status]}</Selo>

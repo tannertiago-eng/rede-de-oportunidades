@@ -64,10 +64,11 @@ O protótipo fica no GitHub Pages. A hospedagem da versão real ainda não está
 
 As contas de Supabase e hospedagem estão, por enquanto, no e-mail pessoal do responsável técnico. Quando houver um e-mail da igreja: convidar esse e-mail como **Owner** da organização no Supabase e na hospedagem, confirmar o acesso e só então remover o e-mail pessoal.
 
-## Instalar no celular
+## Instalar no celular ou no computador
 
 - **Android (Chrome):** menu ⋮ > "Instalar app".
 - **iPhone (Safari):** botão Compartilhar > "Adicionar à Tela de Início".
+- **Computador (Chrome ou Edge):** ícone de instalar, na barra de endereço. Instalar é opcional: o app também funciona direto no navegador.
 
 ## Estrutura
 
@@ -79,7 +80,7 @@ src/
     (app)/                 área do membro e do ministério
     manifest.ts            manifesto do PWA
   componentes/ui/          Botao, Cartao, Campo, Formulario, Chip, Selo, Aviso, Icone
-  componentes/layout/      Cabecalho, NavegacaoInferior, Guarda, FaixaPrototipo...
+  componentes/layout/      Cabecalho, NavegacaoPrincipal, Guarda, FaixaPrototipo...
   estilos/tokens.css       cores da identidade, claro e escuro
   dominio/                 tipos e regras (visibilidade, simulado, indicadores)
   dados/                   dados fictícios e loja local: o que será trocado pelo Supabase

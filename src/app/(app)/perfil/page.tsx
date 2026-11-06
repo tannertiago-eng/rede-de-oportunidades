@@ -75,8 +75,10 @@ export default function PaginaPerfil() {
   return (
     <>
       <Cabecalho titulo="Perfil" />
-      <div className="flex flex-col gap-4">
-        <Aviso>Use dados fictícios neste teste. Nada sai deste aparelho.</Aviso>
+      <div className="flex flex-col gap-4 lg:grid lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-start lg:gap-6">
+        <div className="lg:col-span-2">
+          <Aviso>Use dados fictícios neste teste. Nada sai deste aparelho.</Aviso>
+        </div>
 
         <form
           className="flex flex-col gap-4"
@@ -161,18 +163,20 @@ export default function PaginaPerfil() {
           </Botao>
         </form>
 
-        <Previa perfil={perfil} />
-
-        <div className="flex flex-col gap-2">
-          <Link href="/vitrine/editar" className={classesBotao("secundario", true)}>
-            Meu negócio
-          </Link>
-          <Link href="/avaliacoes" className={classesBotao("secundario", true)}>
-            Avaliações
-          </Link>
-          <Link href="/privacidade" className={classesBotao("secundario", true)}>
-            Privacidade e meus dados
-          </Link>
+        {/* No computador, a prévia fica ao lado dos campos e acompanha a rolagem. */}
+        <div className="flex flex-col gap-4 lg:sticky lg:top-16">
+          <Previa perfil={perfil} />
+          <div className="flex flex-col gap-2">
+            <Link href="/vitrine/editar" className={classesBotao("secundario", true)}>
+              Meu negócio
+            </Link>
+            <Link href="/avaliacoes" className={classesBotao("secundario", true)}>
+              Avaliações
+            </Link>
+            <Link href="/privacidade" className={classesBotao("secundario", true)}>
+              Privacidade e meus dados
+            </Link>
+          </div>
         </div>
       </div>
     </>

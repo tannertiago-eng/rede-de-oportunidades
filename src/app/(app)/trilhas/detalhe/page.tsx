@@ -35,7 +35,7 @@ function Conteudo() {
     <>
       <Cabecalho titulo={trilha.nome} voltar={voltar} />
       <p className="mb-4 text-texto-2">{trilha.descricao}</p>
-      <ol className="flex flex-col gap-3">
+      <ol className="flex flex-col gap-3 md:grid md:grid-cols-2">
         {trilha.itens.map((item, indice) => {
           const registro = estado.progresso_trilha.find((p) => p.usuario_id === usuario.id && p.item_id === item.id);
           const status = registro?.status ?? "a_fazer";

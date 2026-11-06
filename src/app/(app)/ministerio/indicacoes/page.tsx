@@ -78,7 +78,7 @@ export default function PaginaIndicacoes() {
     <>
       <Cabecalho titulo="Indicações" voltar={{ href: "/ministerio", rotulo: "Ministério" }} />
       <p className="mb-4 text-sm text-texto-2">A nota STAR não aparece na tela do membro, que vê só a situação. Ela entra no arquivo de &quot;baixar meus dados&quot;.</p>
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 md:grid md:grid-cols-2 md:items-start">
         {estado.interesses_vaga.map((i) => (
           <Interesse key={i.id} interesse={i} />
         ))}

@@ -31,7 +31,7 @@ function Conteudo() {
     <>
       <Cabecalho titulo="Indicadores" voltar={{ href: "/ministerio", rotulo: "Ministério" }} />
       <p className="mb-4 text-sm text-texto-2">Contratações e negócios fechados são autodeclarados.</p>
-      <ul className="grid grid-cols-2 gap-3">
+      <ul className="grid grid-cols-2 gap-3 md:grid-cols-3">
         {numeros.map((n) => (
           <li key={n.rotulo}>
             <Cartao className="h-full">
@@ -42,8 +42,8 @@ function Conteudo() {
         ))}
       </ul>
 
-      <h2 className="mt-6 text-xl">Por mês</h2>
-      <p className="mb-2 text-sm text-texto-2">Deslize a tabela para o lado para ver todas as colunas.</p>
+      <h2 className="mt-6 mb-2 text-xl">Por mês</h2>
+      <p className="-mt-1 mb-2 text-sm text-texto-2 md:hidden">Deslize a tabela para o lado para ver todas as colunas.</p>
       <Cartao className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>

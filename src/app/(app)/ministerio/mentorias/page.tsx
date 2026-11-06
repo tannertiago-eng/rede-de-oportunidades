@@ -22,7 +22,7 @@ export default function PaginaMentorias() {
     <>
       <Cabecalho titulo="Mentorias" voltar={{ href: "/ministerio", rotulo: "Ministério" }} />
       <p className="mb-4 text-sm text-texto-2">Cada mentoria dura 90 dias.</p>
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 md:grid md:grid-cols-2 md:items-start">
         {visiveis.map((m) => (
           <Cartao key={m.id}>
             <Selo>{m.status === "ativa" ? "Ativa" : "Encerrada"}</Selo>

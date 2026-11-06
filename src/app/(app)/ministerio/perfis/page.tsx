@@ -48,7 +48,7 @@ export default function PaginaPerfis() {
       <p className="mb-4 text-sm text-texto-2">
         {coordenacao ? "A coordenação vê todos os perfis, inclusive executivos e modo discreto." : "Você vê só o que cada pessoa liberou. Perfis executivos e quem está em modo discreto não aparecem como buscando."}
       </p>
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 md:grid md:grid-cols-2 md:items-start">
         {lista.map(({ perfil, visto }) => (
           <CartaoPerfil key={perfil.id} perfil={perfil} visto={visto} coordenacao={coordenacao} />
         ))}

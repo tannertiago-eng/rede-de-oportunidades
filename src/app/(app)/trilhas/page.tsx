@@ -16,13 +16,13 @@ export default function PaginaTrilhas() {
     <>
       <Cabecalho titulo="Trilhas" />
       <p className="mb-4 text-texto-2">Cursos gratuitos de outras instituições, organizados pelo ministério.</p>
-      <ul className="flex flex-col gap-3">
+      <ul className="flex flex-col gap-3 md:grid md:grid-cols-2">
         {TRILHAS.map((t) => {
           const feitos = t.itens.filter((i) => estado.progresso_trilha.some((p) => p.usuario_id === usuario.id && p.item_id === i.id && p.status === "concluido")).length;
           return (
             <li key={t.id}>
               <Link href={`/trilhas/detalhe?id=${t.id}`}>
-                <Cartao className="flex items-center gap-4">
+                <Cartao className="flex h-full items-center gap-4 transition-colors hover:border-primaria">
                   <div className="min-w-0 flex-1">
                     <h2 className="text-xl">{t.nome}</h2>
                     <p className="text-sm text-texto-2">{t.publico}</p>
@@ -37,7 +37,7 @@ export default function PaginaTrilhas() {
           );
         })}
       </ul>
-      <Link href="/avaliacoes" className={`${classesBotao("secundario", true)} mt-4`}>
+      <Link href="/avaliacoes" className={`${classesBotao("secundario", true)} mt-4 md:w-auto`}>
         <Icone nome="avaliacao" /> Avaliações
       </Link>
     </>

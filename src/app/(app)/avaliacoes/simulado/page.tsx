@@ -37,7 +37,7 @@ function Prova({ simulado, tentativa }: { simulado: Simulado; tentativa: Tentati
   }, [restante, tentativa.id]);
 
   return (
-    <>
+    <div className="md:max-w-2xl">
       <Cabecalho titulo={simulado.titulo} voltar={voltar} />
       <div className="flex items-center justify-between font-semibold">
         <p>
@@ -79,7 +79,7 @@ function Prova({ simulado, tentativa }: { simulado: Simulado; tentativa: Tentati
           </Botao>
         )}
       </div>
-    </>
+    </div>
   );
 }
 
@@ -97,7 +97,7 @@ function Correcao({ simulado, tentativa }: { simulado: Simulado; tentativa: Tent
           Compartilhar este resultado com o ministério
         </Marcar>
       </Cartao>
-      <ol className="mt-4 flex flex-col gap-3">
+      <ol className="mt-4 flex flex-col gap-3 md:grid md:grid-cols-2">
         {simulado.questoes.map((q, i) => {
           const resposta = tentativa.respostas[q.id];
           const acertou = resposta === q.correta;

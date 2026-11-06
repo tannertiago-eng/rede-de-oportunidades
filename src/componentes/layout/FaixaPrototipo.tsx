@@ -19,8 +19,8 @@ export function FaixaPrototipo() {
   const linkSugestao = `https://wa.me/${NUMERO_SUGESTOES}?text=${encodeURIComponent(mensagem)}`;
 
   return (
-    <div className="border-b border-linha bg-secundaria text-sm text-texto">
-      <div className="mx-auto flex w-full max-w-xl items-center justify-between gap-2 px-4">
+    <div className="border-b border-linha bg-secundaria text-sm text-texto lg:sticky lg:top-0 lg:z-20">
+      <div className="mx-auto flex w-full max-w-xl items-center justify-between gap-2 px-4 md:max-w-none md:px-6">
         <p className="py-1 leading-tight">
           <strong className="font-semibold">Protótipo</strong> · dados fictícios · {papel}
         </p>

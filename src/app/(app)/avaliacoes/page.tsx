@@ -26,7 +26,7 @@ export default function PaginaAvaliacoes() {
     <>
       <Cabecalho titulo="Avaliações" voltar={{ href: "/trilhas", rotulo: "Trilhas" }} />
       <p className="mb-4 text-texto-2">Os resultados são só seus. Você escolhe se compartilha com o ministério.</p>
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 md:grid md:grid-cols-2 md:items-start lg:grid-cols-3">
         {SIMULADOS.map((s) => {
           const tentativas = estado.tentativas_simulado.filter((t) => t.usuario_id === usuario.id && t.simulado_id === s.id);
           const aberta = tentativas.find((t) => !t.finalizada_em);

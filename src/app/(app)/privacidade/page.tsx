@@ -27,7 +27,7 @@ export default function PaginaPrivacidade() {
   return (
     <>
       <Cabecalho titulo="Privacidade" voltar={{ href: "/perfil", rotulo: "Perfil" }} />
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 md:grid md:grid-cols-2">
         <Cartao>
           <h2 className="text-xl">Baixar meus dados</h2>
           <p className="mt-1">Um arquivo com tudo o que a plataforma guarda sobre você.</p>
@@ -85,7 +85,7 @@ export default function PaginaPrivacidade() {
           )}
         </Cartao>
 
-        <p className="text-sm text-texto-2">
+        <p className="text-sm text-texto-2 md:col-span-2">
           <Link href="/politica" className="underline">
             Política de privacidade
           </Link>{" "}

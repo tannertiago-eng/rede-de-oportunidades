@@ -32,7 +32,10 @@ export default function PaginaVitrine() {
     <>
       <Cabecalho titulo="Vitrine" />
       <div className="flex flex-col gap-4">
-        <Campo id="busca" rotulo="Buscar negócio" type="search" value={busca} onChange={(e) => setBusca(e.target.value)} />
+        <div className="flex flex-col gap-4 md:grid md:grid-cols-2">
+          <Campo id="busca" rotulo="Buscar negócio" type="search" value={busca} onChange={(e) => setBusca(e.target.value)} />
+          <Selecao id="bairro" rotulo="Bairro" value={bairro} onChange={(e) => setBairro(e.target.value)} opcoes={[{ valor: "", rotulo: "Todos os bairros" }, ...unicos(publicados.map((n) => n.bairro)).map((b) => ({ valor: b, rotulo: b }))]} />
+        </div>
         <div className="flex flex-wrap gap-2" role="group" aria-label="Filtrar por categoria">
           {unicos(publicados.map((n) => n.categoria)).map((c) => (
             <Chip key={c} ativo={categoria === c} onClick={() => setCategoria(categoria === c ? "" : c)}>
@@ -40,13 +43,12 @@ export default function PaginaVitrine() {
             </Chip>
           ))}
         </div>
-        <Selecao id="bairro" rotulo="Bairro" value={bairro} onChange={(e) => setBairro(e.target.value)} opcoes={[{ valor: "", rotulo: "Todos os bairros" }, ...unicos(publicados.map((n) => n.bairro)).map((b) => ({ valor: b, rotulo: b }))]} />
 
-        <ul className="flex flex-col gap-3">
+        <ul className="flex flex-col gap-3 md:grid md:grid-cols-2 lg:grid-cols-3">
           {lista.map((n) => (
             <li key={n.id}>
               <Link href={`/vitrine/detalhe?id=${n.id}`}>
-                <Cartao className="flex items-center gap-4">
+                <Cartao className="flex h-full items-center gap-4 transition-colors hover:border-primaria">
                   <div className="min-w-0 flex-1">
                     <h2 className="text-lg">{n.nome}</h2>
                     <p className="text-sm text-texto-2">
@@ -61,7 +63,7 @@ export default function PaginaVitrine() {
           {lista.length === 0 && <li className="text-texto-2">Nenhum negócio encontrado com esses filtros.</li>}
         </ul>
 
-        <Link href="/vitrine/editar" className={classesBotao("principal", true)}>
+        <Link href="/vitrine/editar" className={`${classesBotao("principal", true)} md:w-auto md:self-start`}>
           Meu negócio
         </Link>
       </div>

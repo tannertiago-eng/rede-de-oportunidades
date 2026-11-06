@@ -32,7 +32,7 @@ function Conteudo() {
   return (
     <>
       <Cabecalho titulo={negocio.nome} voltar={voltar} />
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 md:max-w-2xl">
         <Cartao>
           <p className="text-sm text-texto-2">
             {negocio.categoria} · {negocio.bairro}

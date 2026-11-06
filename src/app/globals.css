@@ -67,6 +67,12 @@
     font-weight: 500;
   }
 
+  button:not(:disabled),
+  select:not(:disabled),
+  label[for] {
+    cursor: pointer;
+  }
+
   :focus-visible {
     outline: 2px solid var(--primaria);
     outline-offset: 2px;
