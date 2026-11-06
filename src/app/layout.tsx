@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Kanit, Martel_Sans } from "next/font/google";
+import { FaixaPrototipo } from "@/componentes/layout/FaixaPrototipo";
 import "./globals.css";
 
 // next/font baixa as fontes no build e serve do próprio site:
@@ -55,7 +56,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: scriptTema }} />
       </head>
-      <body className="min-h-full bg-fundo text-texto">{children}</body>
+      <body className="min-h-full bg-fundo text-texto">
+        <FaixaPrototipo />
+        {children}
+      </body>
     </html>
   );
 }

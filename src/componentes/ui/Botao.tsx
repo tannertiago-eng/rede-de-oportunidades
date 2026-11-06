@@ -8,7 +8,7 @@ const base =
 const variantes: Record<VarianteBotao, string> = {
   principal: "bg-primaria text-sobre-primaria hover:opacity-90",
   secundario: "border border-linha bg-superficie text-texto hover:bg-secundaria",
-  texto: "text-primaria hover:bg-secundaria",
+  texto: "text-primaria hover:underline",
 };
 
 // Também usado em <Link> quando o "botão" navega.

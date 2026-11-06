@@ -1,11 +1,14 @@
+"use client";
+
+import type { ReactNode } from "react";
+import { Guarda } from "@/componentes/layout/Guarda";
 import { NavegacaoInferior } from "@/componentes/layout/NavegacaoInferior";
 
-// Área logada. Na Fase 0 ainda não exige login: o bloqueio entra na Fase 1, junto com a tela de entrada.
-export default function LayoutApp({ children }: LayoutProps<"/">) {
+export default function LayoutApp({ children }: { children: ReactNode }) {
   return (
-    <>
+    <Guarda etapa="/inicio">
       <main className="mx-auto w-full max-w-xl px-4 pb-28">{children}</main>
       <NavegacaoInferior />
-    </>
+    </Guarda>
   );
 }
